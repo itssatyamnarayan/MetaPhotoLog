@@ -1,0 +1,27 @@
+const ICONS = {
+  logo: require('../assets/img/MPL_LogoFinal_Splash_1.png'),
+  background: require('../assets/img/pexels-codioful-71304971.png'),
+  dropDown: require('../assets/img/Vector25.png'),
+  taskBt1: require('../assets/img/Frame2147224406.png'),
+  taskBt11: require('../assets/img/Frame2147224657.png'),
+  circleBt2: require('../assets/img/Frame2147224414.png'),
+  circleBt21: require('../assets/img/Frame2147224656.png'),
+  groupBt3: require('../assets/img/Group56286.png'),
+  groupBt31: require('../assets/img/Frame2147224655.png'),
+  threelineBt4: require('../assets/img/Frame2147224725.png'),
+  threelineBt41: require('../assets/img/Frame2147224654.png'),
+  searchIcon: require('../assets/img/searchIcon.png'),
+  mapIcon: require('../assets/img/mapIcon.png'),
+  forDate: require('../assets/img/forDate.png'),
+  threeDots: require('../assets/img/threeDots.png'),
+  plusIcon: require('../assets/img/plusIcon.png'),
+  img1: require('../assets/img/indian-city-buildings-scene.png'),
+  img2: require('../assets/img/image128.png'),
+  img3: require('../assets/img/IMG.png'),
+  img4: require('../assets/img/IMG(1).png'),
+  img5: require('../assets/img/unsplash_GWe0dlVD9e0.png'),
+  img6: require('../assets/img/IMG(2).png'),
+  img7: require('../assets/img/IMG(3).png'),
+};
+
+export default ICONS;

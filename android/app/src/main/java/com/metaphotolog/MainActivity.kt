@@ -5,7 +5,22 @@ import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
 
+// Splash Screen 
+import android.os.Bundle;
+import org.devio.rn.splashscreen.SplashScreen
+
 class MainActivity : ReactActivity() {
+  
+  //Splash Screen 
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    SplashScreen.show(this, true);
+    super.onCreate(null)
+   
+  }
+  
+
+ 
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
