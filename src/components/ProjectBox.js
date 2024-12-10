@@ -9,9 +9,13 @@ const ProjectBox = ({head, minHead, coordinate, duration}) => {
   const navigation = useNavigation();
   const [showDropDown, setShowDropDown] = useState(false);
 
-  function viewProjectDetail() {
+  const viewProjectDetail = () => {
     navigation.navigate('ProjectDetail');
-  }
+  };
+
+  const handleAddPhotos = () => {
+    navigation.navigate('AddPhotos');
+  };
 
   return (
     <View style={styles.root}>
@@ -36,7 +40,7 @@ const ProjectBox = ({head, minHead, coordinate, duration}) => {
         </View>
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <HeaderButtons btn="Add Photo" onClick={() => {}} />
+            <HeaderButtons btn="Add Photo" onClick={handleAddPhotos} />
           </View>
           <View>
             <HeaderButtons

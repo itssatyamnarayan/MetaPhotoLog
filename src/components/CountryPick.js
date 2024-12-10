@@ -10,7 +10,7 @@ import {
 import {memo, useState} from 'react';
 import ICONS from '../../constants/icons';
 
-const CountryPick = () => {
+const CountryPick = ({isEditProfile}) => {
   const [countryCode, setCountryCode] = useState('US');
   const [callingCode, setCallingCode] = useState('1');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -26,10 +26,13 @@ const CountryPick = () => {
     setPhoneNumber(enteredValue);
   }
 
+  const placeholder = isEditProfile ? '(415) 555-1234' : 'Enter Phone Number';
+  const backgroundColor = isEditProfile ? '#F8F8F8' : '#FFFFFF';
+
   return (
     <View style={styles.root}>
       <Text style={styles.text}>Phone Number</Text>
-      <View style={styles.container}>
+      <View style={[styles.container, {backgroundColor: backgroundColor}]}>
         <View style={styles.phoneInputContainer}>
           <TouchableOpacity
             onPress={() => setIsPickerVisible(true)}
@@ -38,7 +41,7 @@ const CountryPick = () => {
             <Image source={ICONS.dropDown} style={styles.img} />
           </TouchableOpacity>
           <TextInput
-            placeholder="Enter phone number"
+            placeholder={placeholder}
             keyboardType="phone-pad"
             value={phoneNumber}
             onChangeText={setPhoneNo}
@@ -75,9 +78,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   container: {
-    backgroundColor: 'white',
     marginHorizontal: 10,
     borderRadius: 10,
+    borderWidth: 0.2,
+    borderColor: 'grey',
   },
   phoneInputContainer: {
     flexDirection: 'row',

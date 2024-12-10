@@ -1,10 +1,10 @@
 import {memo, useState} from 'react';
-import {Menu, MenuItem, MenuDivider} from 'react-native-material-menu';
+import {Menu, MenuItem} from 'react-native-material-menu';
 import {View, StyleSheet, Text, Pressable, Image, Platform} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import ICONS from '../../constants/icons';
 
-const MaterialMenu = ({isHeaderRight}) => {
+const MaterialMenu = ({isHeaderRight, isEditPhoto, source, isEditPhotoLog}) => {
   const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
 
@@ -16,7 +16,13 @@ const MaterialMenu = ({isHeaderRight}) => {
     : {};
 
   function handleEditProject() {
-    navigation.navigate('EditProject');
+    if (isEditPhoto) {
+      navigation.navigate('EditPhoto', {source});
+    } else if (isEditPhotoLog) {
+      navigation.navigate('EditPhotoLog');
+    } else {
+      navigation.navigate('EditProject');
+    }
     setVisible(false);
   }
 
@@ -28,6 +34,8 @@ const MaterialMenu = ({isHeaderRight}) => {
     setVisible(false);
   }
 
+  const icon = isEditPhotoLog ? ICONS.threeDotGreen : ICONS.threeDots;
+
   return (
     <View style={[{marginRight: !isHeaderRight ? 10 : 0}, styles.container]}>
       <Menu
@@ -38,7 +46,7 @@ const MaterialMenu = ({isHeaderRight}) => {
           <Pressable
             onPress={showMenu}
             style={({pressed}) => pressed && styles.pressed}>
-            <Image source={ICONS.threeDots} style={styles.threeDots} />
+            <Image source={icon} style={styles.threeDots} />
           </Pressable>
         }
         style={[styles.menu, headerStyle]}>

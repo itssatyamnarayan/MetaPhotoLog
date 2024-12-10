@@ -1,7 +1,18 @@
-import {View, Text, TextInput, StyleSheet, Platform} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Platform,
+  Image,
+  Pressable,
+} from 'react-native';
 import {memo, useState} from 'react';
+// import ICONS from '../../constants/icons';
+// import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import DateTimePick from './DateTimePick';
 
-const FormInput = ({configure, isProject}) => {
+const FormInput = ({configure, isProject, isIcon, source, value}) => {
   // const [enteredValue, setEnteredValue] = useState({
   //   email: '',
   //   password: '',
@@ -14,6 +25,39 @@ const FormInput = ({configure, isProject}) => {
   //     };
   //   });
   // }
+
+  const mode = isIcon && configure.label === 'Date' ? 'date' : 'time';
+
+  const [isDateVisible, setIsDateVisible] = useState(false);
+  const [selectedDateTime, setSelectedDateTime] = useState({
+    date: '',
+    time: '',
+  });
+
+  const handleDateTime = () => {
+    setIsDateVisible(!isDateVisible);
+  };
+
+  const handleDateTimeConfirm = dateTime => {
+    if (mode === 'date') {
+      const formattedDate = dateTime.toLocaleDateString();
+      setSelectedDateTime(prevDateTime => ({
+        ...prevDateTime,
+        date: formattedDate,
+      }));
+    } else {
+      const formattedTime = dateTime.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+      setSelectedDateTime(prevDateTime => ({
+        ...prevDateTime,
+        time: formattedTime,
+      }));
+    }
+
+    handleDateTime();
+  };
 
   const root = isProject
     ? {
@@ -39,14 +83,37 @@ const FormInput = ({configure, isProject}) => {
 
   return (
     <View style={root}>
+      {isIcon ? (
+        <DateTimePick
+          visible={isDateVisible}
+          onCancel={handleDateTime}
+          onConfirm={handleDateTimeConfirm}
+          mode={mode}
+        />
+      ) : null}
       <Text style={styles.text}>{configure.label}</Text>
       <View style={[styles.container, bgClr, multiLine]}>
-        <TextInput
-          // onChangeText={inputChangeHandler.bind(this, type)}
-          {...configure}
-          //value={enteredValue.password}
-          style={styles.textInput}
-        />
+        <View style={styles.rowIcon}>
+          <TextInput
+            // onChangeText={inputChangeHandler.bind(this, type)}
+            {...configure}
+            //value={enteredValue.password}
+            style={styles.textInput}
+            value={
+              isIcon
+                ? mode === 'date'
+                  ? selectedDateTime.date
+                  : selectedDateTime.time
+                : value
+            }
+          />
+
+          {isIcon ? (
+            <Pressable onPress={handleDateTime}>
+              <Image source={source} style={styles.picker} />
+            </Pressable>
+          ) : null}
+        </View>
       </View>
     </View>
   );
@@ -61,14 +128,25 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   container: {
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
     marginHorizontal: 10,
     borderRadius: 10,
     padding: Platform.OS === 'android' ? 5 : 16,
+    borderWidth: 0.3,
+    borderColor: 'grey',
   },
   textInput: {
     fontSize: 16,
     fontFamily: 'OpenSans-Regular',
     paddingLeft: 5,
+  },
+  picker: {
+    width: 18,
+    height: 18,
+  },
+  rowIcon: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });

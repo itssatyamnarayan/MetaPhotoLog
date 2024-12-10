@@ -25,7 +25,7 @@ const ProjectDetail = ({navigation}) => {
           ]}
           onPress={googleMap}></Pressable>
 
-        <View>
+        <View style={styles.headerContainer}>
           <Text style={styles.minHeadText}>Google Inc.</Text>
           <Text style={styles.lowHeadText}>Google Pixel 7 Development</Text>
         </View>
@@ -72,8 +72,13 @@ export default memo(ProjectDetail);
 const styles = StyleSheet.create({
   root: {
     flexGrow: 1,
-    marginHorizontal: 15,
+
     marginTop: 10,
+  },
+  headerContainer: {
+    paddingBottom: 8,
+    borderBottomWidth: 1,
+    borderColor: '#E8E8EA',
   },
   gMapContainer: {
     paddingHorizontal: 150,
@@ -82,6 +87,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     marginBottom: 20,
+    marginHorizontal: 15,
   },
   pressed: {
     opacity: 0.75,
@@ -91,23 +97,31 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#006D77',
     marginBottom: 5,
+    marginHorizontal: 15,
   },
   lowHeadText: {
     fontFamily: 'OpenSans-SemiBold',
     fontSize: 18,
     marginBottom: 5,
+    marginHorizontal: 15,
   },
   mapDateContainer: {
     paddingVertical: 10,
     marginBottom: 8,
     marginTop: 4,
+    paddingBottom: 10,
+    marginBottom: 10,
+    borderBottomWidth: 1,
+    borderColor: '#E8E8EA',
   },
   mapContainer: {
     flexDirection: 'row',
     paddingBottom: 15,
+    marginHorizontal: 15,
   },
   dateContainer: {
     flexDirection: 'row',
+    marginHorizontal: 15,
   },
   mapDateText: {
     fontFamily: 'OpenSans-SemiBold',
@@ -122,9 +136,11 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginHorizontal: 25,
   },
   textContainer: {
     marginBottom: 20,
+    marginHorizontal: 15,
   },
   infoText: {
     fontFamily: 'OpenSans-SemiBold',

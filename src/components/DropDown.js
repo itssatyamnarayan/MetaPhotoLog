@@ -2,7 +2,7 @@ import {memo, useState} from 'react';
 import {Dropdown} from 'react-native-element-dropdown';
 import {View, Text, StyleSheet, Platform} from 'react-native';
 
-const DropDown = ({dataItems}) => {
+const DropDown = ({dataItems, placeholder}) => {
   const [selectedValue, setSelectedValue] = useState(null);
 
   const handleSelectedValue = value => {
@@ -11,7 +11,7 @@ const DropDown = ({dataItems}) => {
   return (
     <View style={styles.dropDownContainer}>
       <Dropdown
-        placeholder="Select Project"
+        placeholder={placeholder}
         data={dataItems}
         labelField="label"
         valueField="value"
@@ -36,15 +36,20 @@ export default memo(DropDown);
 const styles = StyleSheet.create({
   dropDownContainer: {
     backgroundColor: '#F8F8F8',
-    marginHorizontal: 15,
-    padding: 16,
+    marginHorizontal: 5,
+    paddingHorizontal: 16,
     borderRadius: 10,
+    borderWidth: 0.3,
+    borderColor: 'grey',
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   container: {
     borderRadius: 8,
   },
   placeholder: {
     fontFamily: 'OpenSans-Regular',
+    opacity: 0.25,
   },
   selectedText: {
     fontFamily: 'OpenSans-Regular',

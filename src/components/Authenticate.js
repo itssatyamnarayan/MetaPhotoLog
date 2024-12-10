@@ -58,6 +58,7 @@ const Authenticate = ({headerText, btnName, isLogin, isAcc}) => {
                 secureTextEntry: true,
                 autoCapitalize: 'none',
                 autoCorrect: false,
+                placeholder: 'Enter Password',
               }}
             />
             <Buttons btn={btnName} onClick={verifyLoginRegister} />

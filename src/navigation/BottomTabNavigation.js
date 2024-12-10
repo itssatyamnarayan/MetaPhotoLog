@@ -1,12 +1,12 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {memo} from 'react';
 import Projects from '../screens/Projects';
-import Project3 from '../screens/Project3';
-import Project4 from '../screens/Project4';
 import {Image, StyleSheet, View, Text, Pressable, Platform} from 'react-native';
 import ICONS from '../../constants/icons';
 import HeaderButtons from '../components/HeaderButtons';
 import Photos from '../screens/Photos';
+import PhotoLogs from '../screens/PhotoLogs';
+import MainMenu from '../screens/MainMenu';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -15,7 +15,13 @@ const BottomTabNavigation = ({navigation}) => {
     navigation.navigate('CreateProject');
   }
 
-  const addPhoto = () => {};
+  const addPhoto = () => {
+    navigation.navigate('CapturePhoto');
+  };
+
+  const createPhotoLog = () => {
+    navigation.navigate('CreatePhotoLog');
+  };
 
   return (
     <BottomTabs.Navigator
@@ -107,8 +113,8 @@ const BottomTabNavigation = ({navigation}) => {
       />
 
       <BottomTabs.Screen
-        name="C"
-        component={Project3}
+        name="PhotoLogs"
+        component={PhotoLogs}
         options={{
           tabBarIcon: ({color, size, focused}) =>
             focused ? (
@@ -129,11 +135,18 @@ const BottomTabNavigation = ({navigation}) => {
                 }}
               />
             ),
+          headerRight: () => (
+            <HeaderButtons
+              btn="+ New"
+              isHeader={true}
+              onClick={createPhotoLog}
+            />
+          ),
         }}
       />
       <BottomTabs.Screen
-        name="D"
-        component={Project4}
+        name="MainMenu"
+        component={MainMenu}
         options={{
           tabBarIcon: ({color, focused}) =>
             focused ? (
@@ -154,6 +167,7 @@ const BottomTabNavigation = ({navigation}) => {
                 }}
               />
             ),
+          headerShown: false,
         }}
       />
     </BottomTabs.Navigator>

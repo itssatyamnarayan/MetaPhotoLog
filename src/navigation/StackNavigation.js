@@ -10,6 +10,15 @@ import CreateProject from '../screens/CreateProject';
 import EditProject from '../screens/EditProject';
 
 import MaterialMenu from '../components/MaterialMenu';
+import CapturePhoto from '../screens/CapturePhoto';
+import EditPhoto from '../screens/EditPhoto';
+import CreatePhotoLog from '../screens/CreatePhotoLog';
+import AddPhotos from '../screens/AddPhotos';
+import EditPhotoLog from '../screens/EditPhotoLog';
+
+import MaterialTopTabNavigation from './MaterialTopTabNavigation';
+import EditProfile from '../screens/EditProfile';
+import Subscription from '../screens/Subscription';
 
 const Stack = createNativeStackNavigator();
 
@@ -80,6 +89,64 @@ const StackNavigation = () => {
         options={{
           title: 'Edit Project',
         }}
+      />
+
+      <Stack.Screen
+        name="CapturePhoto"
+        component={CapturePhoto}
+        options={{
+          title: 'Capture Photo',
+        }}
+      />
+
+      <Stack.Screen
+        name="EditPhoto"
+        component={EditPhoto}
+        options={{
+          title: 'Edit Photo',
+        }}
+      />
+
+      <Stack.Screen
+        name="CreatePhotoLog"
+        component={CreatePhotoLog}
+        options={{
+          title: 'Create PhotoLog',
+        }}
+      />
+
+      <Stack.Screen
+        name="AddPhotos"
+        component={AddPhotos}
+        options={{
+          title: 'Add Photos',
+        }}
+      />
+
+      <Stack.Screen
+        name="EditPhotoLog"
+        component={EditPhotoLog}
+        options={{
+          title: 'Edit PhotoLog',
+        }}
+      />
+
+      <Stack.Screen
+        name="MaterialTopTabNavigation"
+        component={MaterialTopTabNavigation}
+        options={{title: 'Templates'}}
+      />
+
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
+        options={{title: 'Edit Profile'}}
+      />
+
+      <Stack.Screen
+        name="Subscription"
+        component={Subscription}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
