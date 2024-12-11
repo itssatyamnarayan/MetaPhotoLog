@@ -1,36 +1,11 @@
 import {memo} from 'react';
-import {
-  Image,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import ICONS from '../../constants/icons';
-import {useNavigation} from '@react-navigation/native';
 
-const MainMenuButtons = ({icon, title, btn}) => {
-  const navigation = useNavigation();
-
-  const handleTemplates = () => {
-    navigation.navigate('MaterialTopTabNavigation');
-  };
-  const handleEditProfile = () => {
-    navigation.navigate('EditProfile');
-  };
-
-  const handleDifferentButtons = () => {
-    if (btn === 'btn1') {
-      handleTemplates();
-    } else if (btn === 'btn2') {
-      handleEditProfile();
-    }
-  };
-
+const MainMenuButtons = ({icon, title, onClick}) => {
   return (
     <>
-      <Pressable style={styles.btn} onPress={handleDifferentButtons}>
+      <Pressable style={styles.btn} onPress={onClick}>
         <View style={styles.rowBtn}>
           <View style={styles.rowIcon}>
             <Image source={icon} style={styles.img} />

@@ -1,8 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {memo} from 'react';
-import Login from '../screens/Login';
-import Register from '../screens/Register';
-import ProfileSetup from '../screens/ProfileSetup';
+import {View} from 'react-native';
 import BottomTabNavigation from './BottomTabNavigation';
 import ProjectDetail from '../screens/ProjectDetail';
 import Map from '../screens/Map';
@@ -36,22 +34,8 @@ const StackNavigation = () => {
           backgroundColor: '#006D77',
           height: Platform.OS === 'android' ? 100 : 115,
         },
+        statusBarStyle: 'light',
       }}>
-      <Stack.Screen
-        name="Login"
-        component={Login}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Register"
-        component={Register}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ProfileSetup"
-        component={ProfileSetup}
-        options={{headerShown: false}}
-      />
       <Stack.Screen
         name="BottomTabs"
         component={BottomTabNavigation}
@@ -63,7 +47,11 @@ const StackNavigation = () => {
         options={{
           title: 'Project Detail',
 
-          headerRight: () => <MaterialMenu isHeaderRight={true} />,
+          headerRight: () => (
+            <View style={{overflow: 'visible'}}>
+              <MaterialMenu isHeaderRight={true} />
+            </View>
+          ),
         }}
       />
 

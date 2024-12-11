@@ -4,10 +4,14 @@ import Buttons from '../components/Buttons';
 import CountryPick from '../components/CountryPick';
 import BackgroundWrapper from '../components/BackgroundWrapper';
 import {memo} from 'react';
+import {login} from '../store/authSlice';
+import {useDispatch} from 'react-redux';
 
-const ProfileSetup = ({navigation}) => {
+const ProfileSetup = () => {
+  const dispatch = useDispatch();
+
   function projectScreen() {
-    navigation.navigate('BottomTabs');
+    dispatch(login());
   }
 
   return (
@@ -52,8 +56,9 @@ const ProfileSetup = ({navigation}) => {
             }}
           />
         </View>
-
-        <Buttons btn="Continue" onClick={projectScreen} />
+        <View style={styles.btn}>
+          <Buttons btn="Continue" onClick={projectScreen} />
+        </View>
       </ScrollView>
     </BackgroundWrapper>
   );
@@ -64,8 +69,7 @@ export default memo(ProfileSetup);
 const styles = StyleSheet.create({
   textContainer: {
     alignItems: 'center',
-    marginTop: Platform.OS == 'android' ? 45 : 70,
-    padding: Platform.OS == 'android' ? 0 : 15,
+    marginTop: Platform.OS == 'android' ? 20 : 50,
   },
   text: {
     fontFamily: 'OpenSans-Bold',
@@ -74,5 +78,9 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 26,
     marginHorizontal: 12,
+  },
+  btn: {
+    marginTop: 10,
+    marginBottom: 10,
   },
 });

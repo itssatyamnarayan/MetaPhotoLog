@@ -1,6 +1,6 @@
 import {memo, useState} from 'react';
 import {Menu, MenuItem} from 'react-native-material-menu';
-import {View, StyleSheet, Text, Pressable, Image, Platform} from 'react-native';
+import {View, StyleSheet, Pressable, Image, Platform} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import ICONS from '../../constants/icons';
 
@@ -37,7 +37,7 @@ const MaterialMenu = ({isHeaderRight, isEditPhoto, source, isEditPhotoLog}) => {
   const icon = isEditPhotoLog ? ICONS.threeDotGreen : ICONS.threeDots;
 
   return (
-    <View style={[{marginRight: !isHeaderRight ? 10 : 0}, styles.container]}>
+    <View style={[{marginRight: !isHeaderRight ? 10 : -10}, styles.container]}>
       <Menu
         visible={visible}
         onRequestClose={hideMenu}

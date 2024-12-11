@@ -1,5 +1,4 @@
 import {memo} from 'react';
-import {View, StyleSheet} from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
 const DateTimePick = ({visible, onCancel, onConfirm, mode}) => {

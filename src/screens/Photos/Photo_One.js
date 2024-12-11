@@ -1,5 +1,5 @@
 import {memo} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import Template from '../../components/Template';
 import ICONS from '../../../constants/icons';
 

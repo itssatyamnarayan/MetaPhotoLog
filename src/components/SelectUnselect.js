@@ -5,8 +5,8 @@ import {
   Image,
   Text,
   FlatList,
-  Platform,
   Pressable,
+  Dimensions,
 } from 'react-native';
 import ICONS from '../../constants/icons';
 import {useNavigation} from '@react-navigation/native';
@@ -104,6 +104,7 @@ const SelectUnselect = ({images, day, setSelectedImageCount, isAllSelect}) => {
         numColumns={3}
         keyExtractor={item => item.id}
         scrollEnabled={false}
+        columnWrapperStyle={styles.row}
       />
     </View>
   );
@@ -125,10 +126,12 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   imgContainer: {
-    width: 132,
-    height: 132,
     position: 'relative',
-    marginRight: Platform.OS === 'ios' ? 6 : 8,
+    width: Dimensions.get('screen').width / 3.09,
+    aspectRatio: 1,
+  },
+  row: {
+    gap: 5.9,
   },
   img: {
     width: '100%',

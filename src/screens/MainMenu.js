@@ -1,17 +1,46 @@
 import {memo} from 'react';
-import {StyleSheet, View, Text, Pressable} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Pressable,
+  ScrollView,
+  Platform,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MainMenuButtons from '../components/MainMenuButtons';
 import ICONS from '../../constants/icons';
+import {useDispatch} from 'react-redux';
+import {logout} from '../store/authSlice';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const MainMenu = ({navigation}) => {
+  const {top} = useSafeAreaInsets();
+  const dispatch = useDispatch();
+
   const handleSubscription = () => {
     navigation.navigate('Subscription');
   };
+
+  const handleTemplates = () => {
+    navigation.navigate('MaterialTopTabNavigation');
+  };
+  const handleEditProfile = () => {
+    navigation.navigate('EditProfile');
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
-    <>
+    <ScrollView>
       <View style={styles.headerContainer}>
-        <View style={styles.textContainer}>
+        <View
+          style={[
+            styles.textContainer,
+            {marginTop: Platform.OS === 'android' ? 15 : top + 5},
+          ]}>
           <Text style={styles.menuText}>Main Menu</Text>
           <Text style={[styles.text, {color: '#8BF5FF'}]}>Welcome Back,</Text>
           <Text style={styles.text}>Ronald Dahl!</Text>
@@ -42,42 +71,47 @@ const MainMenu = ({navigation}) => {
         <MainMenuButtons
           icon={ICONS.menuBtn1}
           title="PhotoLog Templates"
-          btn="btn1"
+          onClick={handleTemplates}
         />
         <MainMenuButtons
           icon={ICONS.menuBtn2}
           title="Edit Profile"
-          btn="btn2"
+          onClick={handleEditProfile}
         />
         <MainMenuButtons
           icon={ICONS.menuBtn3}
           title="Change Password"
-          btn="btn3"
+          onClick={() => {}}
         />
         <MainMenuButtons
           icon={ICONS.menuBtn4}
           title="Help & Support"
-          btn="btn4"
+          onClick={() => {}}
         />
         <MainMenuButtons
           icon={ICONS.menuBtn5}
           title="Privacy Policy"
-          btn="btn5"
+          onClick={() => {}}
         />
         <MainMenuButtons
           icon={ICONS.menuBtn6}
           title="Terms & Conditions"
-          btn="btn6"
+          onClick={() => {}}
         />
         <MainMenuButtons
           icon={ICONS.menuBtn7}
           title="Delete Account"
-          btn="btn7"
+          onClick={() => {}}
         />
-        <MainMenuButtons icon={ICONS.menuBtn8} title="Logout" btn="btn8" />
+        <MainMenuButtons
+          icon={ICONS.menuBtn8}
+          title="Logout"
+          btn="btn8"
+          onClick={handleLogout}
+        />
         <Text style={styles.versionText}>V 1.2.0.1</Text>
       </View>
-    </>
+    </ScrollView>
   );
 };
 
@@ -87,11 +121,11 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 0.3,
     backgroundColor: '#006D77',
-    borderEndEndRadius: 15,
-    borderEndStartRadius: 15,
+    paddingBottom: 15,
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
   },
   textContainer: {
-    marginTop: 60,
     justifyContent: 'center',
     alignItems: 'center',
   },

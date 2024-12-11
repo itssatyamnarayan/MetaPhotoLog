@@ -1,5 +1,5 @@
 import {memo} from 'react';
-import {StyleSheet, ScrollView, Image, View} from 'react-native';
+import {StyleSheet, ScrollView} from 'react-native';
 import EditCatpurePhoto from '../components/EditCatpurePhoto';
 
 const EditPhoto = ({route}) => {
@@ -7,7 +7,7 @@ const EditPhoto = ({route}) => {
 
   return (
     <ScrollView
-      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}
       bounces={false}
       style={styles.container}>
       <EditCatpurePhoto

@@ -70,7 +70,7 @@ export default memo(CountryPick);
 
 const styles = StyleSheet.create({
   root: {
-    marginBottom: 24,
+    marginBottom: 10,
   },
   text: {
     fontFamily: 'OpenSans-SemiBold',

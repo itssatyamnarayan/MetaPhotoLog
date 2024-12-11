@@ -1,5 +1,5 @@
 import {memo} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import Template from '../../components/Template';
 import ICONS from '../../../constants/icons';
 
@@ -20,7 +20,7 @@ export default memo(AllPhoto);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 10,
+    paddingHorizontal: 7,
     backgroundColor: '#FFFFFF',
   },
   minContainer: {

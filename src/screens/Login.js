@@ -1,7 +1,7 @@
 import {memo} from 'react';
 import Authenticate from '../components/Authenticate';
 
-const Login = ({navigation}) => {
+const Login = () => {
   return (
     <Authenticate
       headerText="Welcome Back!"

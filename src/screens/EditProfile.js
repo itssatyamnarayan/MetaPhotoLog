@@ -1,12 +1,12 @@
 import {memo} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, ScrollView} from 'react-native';
 import FormInput from '../components/FormInput';
 import CountryPick from '../components/CountryPick';
 import Buttons from '../components/Buttons';
 
 const EditProfile = () => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <FormInput
         configure={{
           label: 'First Name',
@@ -44,7 +44,7 @@ const EditProfile = () => {
       <View style={styles.btn}>
         <Buttons btn="Save" />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   btn: {
-    marginTop: 100,
+    marginTop: 30,
+    marginBottom: 40,
   },
 });

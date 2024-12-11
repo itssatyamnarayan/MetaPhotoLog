@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {memo} from 'react';
 import Projects from '../screens/Projects';
-import {Image, StyleSheet, View, Text, Pressable, Platform} from 'react-native';
+import {Image, StyleSheet, Platform} from 'react-native';
 import ICONS from '../../constants/icons';
 import HeaderButtons from '../components/HeaderButtons';
 import Photos from '../screens/Photos';
@@ -28,7 +28,6 @@ const BottomTabNavigation = ({navigation}) => {
       screenOptions={{
         headerStyle: {
           backgroundColor: '#006D77',
-          height: Platform.OS === 'android' ? 90 : 105,
         },
         headerTintColor: '#FFFFFF',
         headerTitleAlign: 'left',

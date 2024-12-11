@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
-import {StatusBar, StyleSheet, Platform} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import RootNavigation from './src/navigation/RootNavigation';
+import store from './src/store/store';
+import {Provider} from 'react-redux';
 
 function App(): React.JSX.Element {
   useEffect(() => {
@@ -12,13 +14,9 @@ function App(): React.JSX.Element {
 
   return (
     <>
-      <StatusBar
-        translucent={true}
-        backgroundColor="transparent"
-        barStyle="dark-content"
-      />
-
-      <RootNavigation />
+      <Provider store={store}>
+        <RootNavigation />
+      </Provider>
     </>
   );
 }

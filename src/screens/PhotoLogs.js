@@ -1,12 +1,5 @@
 import {memo, useState} from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  ScrollView,
-  Image,
-  TextInput,
-} from 'react-native';
+import {View, StyleSheet, ScrollView, Image, TextInput} from 'react-native';
 import ICONS from '../../constants/icons';
 import Logs from '../components/Logs';
 

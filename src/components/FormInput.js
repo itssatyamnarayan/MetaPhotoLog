@@ -8,8 +8,7 @@ import {
   Pressable,
 } from 'react-native';
 import {memo, useState} from 'react';
-// import ICONS from '../../constants/icons';
-// import DateTimePickerModal from 'react-native-modal-datetime-picker';
+
 import DateTimePick from './DateTimePick';
 
 const FormInput = ({configure, isProject, isIcon, source, value}) => {
@@ -59,13 +58,13 @@ const FormInput = ({configure, isProject, isIcon, source, value}) => {
     handleDateTime();
   };
 
-  const root = isProject
-    ? {
-        marginBottom: 10,
-      }
-    : {
-        marginBottom: 24,
-      };
+  // const root = isProject
+  //   ? {
+  //       marginBottom: 10,
+  //     }
+  //   : {
+  //       marginBottom: 10,
+  //     };
 
   const bgClr = isProject
     ? {
@@ -82,7 +81,7 @@ const FormInput = ({configure, isProject, isIcon, source, value}) => {
     : {};
 
   return (
-    <View style={root}>
+    <View style={styles.root}>
       {isIcon ? (
         <DateTimePick
           visible={isDateVisible}
@@ -122,10 +121,14 @@ const FormInput = ({configure, isProject, isIcon, source, value}) => {
 export default memo(FormInput);
 
 const styles = StyleSheet.create({
+  root: {
+    marginBottom: 10,
+  },
   text: {
     fontFamily: 'OpenSans-SemiBold',
     fontSize: 14,
     padding: 10,
+    marginLeft: 5,
   },
   container: {
     backgroundColor: '#FFFFFF',

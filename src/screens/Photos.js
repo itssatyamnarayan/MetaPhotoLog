@@ -28,30 +28,39 @@ const oldImages = [
   {source: ICONS.img7, id: '7'},
 ];
 
-const Photos = () => {
+const Photos = ({navigation}) => {
   const [selectedImageCount, setSelectedImageCount] = useState(0);
+
+  const handleCreatePhotoLog = () => {
+    navigation.navigate('CreatePhotoLog');
+  };
   return (
-    <ScrollView style={styles.container}>
-      <DropDown dataItems={data} placeholder="Select Project" />
-      <View style={styles.imgContainer}>
-        <SelectUnselect
-          images={Images}
-          day="Today"
-          setSelectedImageCount={setSelectedImageCount}
-        />
-      </View>
-      <View style={styles.imgContainer}>
-        <SelectUnselect
-          images={oldImages}
-          day="May 12, 2024"
-          setSelectedImageCount={setSelectedImageCount}
-          isAllSelect={true}
-        />
-      </View>
-      <View style={styles.btn}>
-        <Buttons btn={`Create PhotoLog (${selectedImageCount})`} />
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <DropDown dataItems={data} placeholder="Select Project" />
+        <View style={styles.imgContainer}>
+          <SelectUnselect
+            images={Images}
+            day="Today"
+            setSelectedImageCount={setSelectedImageCount}
+            isAllSelect={true}
+          />
+        </View>
+        <View style={styles.imgContainer}>
+          <SelectUnselect
+            images={oldImages}
+            day="May 12, 2024"
+            setSelectedImageCount={setSelectedImageCount}
+            isAllSelect={true}
+          />
+        </View>
+      </ScrollView>
+
+      <Buttons
+        btn={`Create PhotoLog (${selectedImageCount})`}
+        onClick={handleCreatePhotoLog}
+      />
+    </View>
   );
 };
 
@@ -66,14 +75,5 @@ const styles = StyleSheet.create({
   imgContainer: {
     marginTop: 7,
     marginBottom: 5,
-  },
-  btn: {
-    shadowColor: '#ffffff',
-    shadowOffset: {
-      width: 8,
-      height: 3,
-    },
-    shadowOpacity: 0.15,
-    shadowRadius: 3.84,
   },
 });

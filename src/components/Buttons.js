@@ -20,8 +20,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#006D77',
     padding: 14,
     borderRadius: 12,
-    margin: 10,
-    marginTop: 25,
+    marginHorizontal: 10,
+    marginTop: 5,
+    marginBottom: 4,
   },
   pressed: {
     opacity: 0.95,

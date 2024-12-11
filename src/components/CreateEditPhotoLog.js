@@ -1,5 +1,12 @@
 import {memo} from 'react';
-import {View, Text, Image, StyleSheet, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  FlatList,
+  Dimensions,
+} from 'react-native';
 
 import FormInput from './FormInput';
 import DropDown from './DropDown';
@@ -79,7 +86,10 @@ const CreateEditPhotoLog = ({title}) => {
           data={photos}
           renderItem={({item}) => (
             <View style={styles.photoBox}>
-              <Image source={item.source} style={{width: 120, height: 120}} />
+              <Image
+                source={item.source}
+                style={{width: '100%', height: '100%'}}
+              />
               <Image source={ICONS.tick} style={styles.tick} />
             </View>
           )}
@@ -129,6 +139,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     marginBottom: 5,
     position: 'relative',
+    width: Dimensions.get('screen').width / 3.36,
+    aspectRatio: 1,
   },
   row: {
     gap: 5,
@@ -140,7 +152,7 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     position: 'absolute',
-    marginLeft: 85,
+    marginLeft: 75,
     marginTop: 10,
   },
   btn: {

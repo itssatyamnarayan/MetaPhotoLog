@@ -1,5 +1,12 @@
 import {memo} from 'react';
-import {Pressable, Text, StyleSheet, View, Platform} from 'react-native';
+import {
+  Pressable,
+  Text,
+  StyleSheet,
+  View,
+  Platform,
+  Dimensions,
+} from 'react-native';
 
 const HeaderButtons = ({btn, isHeader, onClick}) => {
   const btnStyle = isHeader
@@ -16,8 +23,10 @@ const HeaderButtons = ({btn, isHeader, onClick}) => {
     : {
         backgroundColor: '#D7E8E8',
         borderRadius: 5,
-        width: 159.5,
-        height: 35,
+        width: Dimensions.get('screen').width / 2.35,
+        height: Dimensions.get('screen').width / 10,
+        justifyContent: 'center',
+        alignItems: 'center',
       };
 
   const textStyle = isHeader
@@ -26,17 +35,16 @@ const HeaderButtons = ({btn, isHeader, onClick}) => {
       }
     : {
         color: '#5C546A',
-        paddingTop: 8,
       };
 
   return (
-    <View style={btnStyle}>
-      <Pressable
-        style={({pressed}) => pressed && styles.pressed}
-        onPress={onClick}>
+    <Pressable
+      style={({pressed}) => pressed && styles.pressed}
+      onPress={onClick}>
+      <View style={btnStyle}>
         <Text style={[styles.text, textStyle]}>{btn}</Text>
-      </Pressable>
-    </View>
+      </View>
+    </Pressable>
   );
 };
 

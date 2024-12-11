@@ -1,5 +1,5 @@
 import {memo} from 'react';
-import {Pressable, Text, StyleSheet, View, Platform} from 'react-native';
+import {Pressable, Text, StyleSheet, View} from 'react-native';
 
 const BottomButtons = ({btn, textClr, bgClr, onClick}) => {
   return (

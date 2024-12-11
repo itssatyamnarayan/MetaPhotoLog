@@ -6,7 +6,7 @@ import {
   Pressable,
   KeyboardAvoidingView,
   ScrollView,
-  ImageBackground,
+  Dimensions,
 } from 'react-native';
 import FormInput from './FormInput';
 import Buttons from './Buttons';
@@ -14,12 +14,17 @@ import {useNavigation} from '@react-navigation/native';
 import ICONS from '../../constants/icons';
 import BackgroundWrapper from './BackgroundWrapper';
 import {memo} from 'react';
+import {login} from '../store/authSlice';
+import {useDispatch} from 'react-redux';
 
 const Authenticate = ({headerText, btnName, isLogin, isAcc}) => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   function verifyLoginRegister() {
-    if (!isLogin) {
+    if (isLogin) {
+      dispatch(login());
+    } else {
       navigation.navigate('ProfileSetup');
     }
   }
@@ -61,7 +66,9 @@ const Authenticate = ({headerText, btnName, isLogin, isAcc}) => {
                 placeholder: 'Enter Password',
               }}
             />
-            <Buttons btn={btnName} onClick={verifyLoginRegister} />
+            <View style={styles.btn}>
+              <Buttons btn={btnName} onClick={verifyLoginRegister} />
+            </View>
             {isLogin && (
               <Pressable style={({pressed}) => pressed && styles.pressed}>
                 <Text style={styles.forgetPass}>Forgot Password?</Text>
@@ -89,17 +96,13 @@ const Authenticate = ({headerText, btnName, isLogin, isAcc}) => {
 export default memo(Authenticate);
 
 const styles = StyleSheet.create({
-  // background: {
-  //   flex: 1,
-  // },
   innerContainerOne: {
     alignItems: 'center',
-    marginTop: 92,
-    marginLeft: 12,
+    marginTop: Dimensions.get('window').height * 0.07,
   },
   image: {
-    width: 150,
-    height: 150,
+    width: '100%',
+    aspectRatio: 1.5,
     resizeMode: 'contain',
   },
   textContainer: {
@@ -115,13 +118,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'OpenSans-SemiBold',
     fontSize: 16,
-    marginTop: 4,
+    marginTop: Dimensions.get('window').height * 0.02,
   },
   createAcc: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 50,
+    marginTop: Dimensions.get('window').height * 0.07,
   },
   innerCreate: {
     marginRight: 4,
@@ -135,5 +138,8 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.75,
+  },
+  btn: {
+    marginTop: 10,
   },
 });

@@ -55,6 +55,13 @@ const ICONS = {
   template6: require('../assets/img/Template17.png'),
   cross: require('../assets/img/Frame2147224637.png'),
   check: require('../assets/img/check1.png'),
+  unSelectedCircle: require('../assets/img/Frame2147224641.png'),
+  selectedCircle: require('../assets/img/Frame2147224641(1).png'),
+  info: require('../assets/img/Icon-Refresh.png'),
+  greeRightArrow: require('../assets/img/Frame2147224556.png'),
+  point: require('../assets/img/Ellipse49.png'),
+  map: require('../assets/img/MapsicleMap.png'),
+  whiteArrow: require('../assets/img/backarrow.png'),
 };
 
 export default ICONS;

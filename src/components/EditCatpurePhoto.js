@@ -1,5 +1,5 @@
 import {memo} from 'react';
-import {View, Text, StyleSheet, Platform, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
 import ICONS from '../../constants/icons';
 import FormInput from './FormInput';
 import DropDown from './DropDown';
@@ -169,8 +169,8 @@ export default memo(EditCapturePhoto);
 
 const styles = StyleSheet.create({
   capturedPhotoContainer: {
-    width: 373,
-    height: 343,
+    width: Dimensions.get('screen').width / 1.09,
+    aspectRatio: 1,
     borderRadius: 12,
     marginHorizontal: 15,
     marginTop: 15,
@@ -178,9 +178,9 @@ const styles = StyleSheet.create({
   iconsOnCapturePhoto: {
     position: 'absolute',
     flexDirection: 'row',
-    marginTop: '78%',
+    marginTop: Dimensions.get('screen').height / 2.73,
     shadowColor: '#000',
-    shadowOffset: {width: 10, height: 2},
+    shadowOffset: {width: 5, height: 1.5},
     shadowOpacity: 1.5,
     shadowRadius: 10,
     elevation: 10,
@@ -196,13 +196,13 @@ const styles = StyleSheet.create({
     fontFamily: 'OpenSans-SemiBold',
     fontSize: 14,
     color: '#FFFFFF',
-    marginTop: 19,
-    marginLeft: 4,
+    marginTop: 15,
+    marginLeft: 6,
   },
   camera: {
     width: 40,
     height: 40,
-    marginLeft: Platform.OS === 'android' ? '52%' : '49%',
+    marginLeft: Dimensions.get('screen').width / 2.3,
     marginBottom: 15,
     backgroundColor: 'rgba(0, 0, 0, 0.25)',
   },

@@ -1,5 +1,5 @@
 import {memo, useState} from 'react';
-import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import HeaderButtons from './HeaderButtons';
 import ICONS from '../../constants/icons';
 import {useNavigation} from '@react-navigation/native';
@@ -38,6 +38,35 @@ const ProjectBox = ({head, minHead, coordinate, duration}) => {
             <Text style={styles.mapDateText}>{duration}</Text>
           </View>
         </View>
+
+        {/* <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingHorizontal: 12,
+          }}>
+          <View
+            style={{height: 35, width: '48%', backgroundColor: 'black'}}></View>
+          <View
+            style={{height: 35, width: '48%', backgroundColor: 'black'}}></View>
+        </View>
+
+         <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingHorizontal: 12,
+          }}>
+          <View
+            style={{height: 35, width: '48%', backgroundColor: 'black'}}></View>
+          <View
+            style={{height: 35, width: '48%', backgroundColor: 'black'}}></View>
+        </View>  */}
+
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
             <HeaderButtons btn="Add Photo" onClick={handleAddPhotos} />
@@ -147,8 +176,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row',
-    marginHorizontal: 22,
-    marginBottom: 8,
+    marginHorizontal: 10,
+    marginBottom: 5,
   },
   button: {
     marginRight: 6,

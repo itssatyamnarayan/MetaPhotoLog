@@ -1,6 +1,6 @@
 import {memo, useState} from 'react';
 import {Dropdown} from 'react-native-element-dropdown';
-import {View, Text, StyleSheet, Platform} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 const DropDown = ({dataItems, placeholder}) => {
   const [selectedValue, setSelectedValue] = useState(null);

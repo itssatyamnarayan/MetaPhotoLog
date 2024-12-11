@@ -1,6 +1,5 @@
 import {memo} from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-import ICONS from '../../constants/icons';
+import {Dimensions, Image, StyleSheet, View} from 'react-native';
 
 const Template = ({temp1, temp2}) => {
   return (
@@ -20,13 +19,13 @@ export default memo(Template);
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    gap: 10,
+    gap: 5,
     marginTop: 15,
   },
   imgContainer: {
     borderRadius: 8.75,
     marginLeft: 10,
-    width: 174,
+    width: Dimensions.get('screen').width / 2.3,
     height: 371,
   },
   img: {

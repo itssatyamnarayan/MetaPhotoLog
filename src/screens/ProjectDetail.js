@@ -6,6 +6,7 @@ import {
   Image,
   Pressable,
   ScrollView,
+  Dimensions,
 } from 'react-native';
 import ICONS from '../../constants/icons';
 import BottomButtons from '../components/BottomButtons';
@@ -23,7 +24,13 @@ const ProjectDetail = ({navigation}) => {
             ({pressed}) => pressed && styles.pressed,
             styles.gMapContainer,
           ]}
-          onPress={googleMap}></Pressable>
+          onPress={googleMap}>
+          <Image source={ICONS.map} style={{width: '100%', height: '100%'}} />
+          <View style={styles.expandMapwrapper}>
+            <Text style={styles.expandText}>Expand Map</Text>
+            <Image source={ICONS.whiteArrow} style={{width: 14, height: 14}} />
+          </View>
+        </Pressable>
 
         <View style={styles.headerContainer}>
           <Text style={styles.minHeadText}>Google Inc.</Text>
@@ -73,7 +80,7 @@ const styles = StyleSheet.create({
   root: {
     flexGrow: 1,
 
-    marginTop: 10,
+    marginTop: 15,
   },
   headerContainer: {
     paddingBottom: 8,
@@ -81,16 +88,36 @@ const styles = StyleSheet.create({
     borderColor: '#E8E8EA',
   },
   gMapContainer: {
-    paddingHorizontal: 150,
-    paddingVertical: 170,
-    backgroundColor: '#D7E8E8',
+    width: Dimensions.get('screen').width / 1.08,
+    aspectRatio: 1,
     borderWidth: 1,
     borderRadius: 10,
     marginBottom: 20,
     marginHorizontal: 15,
+    backgroundColor: '#D7E8E8',
+    overflow: 'hidden',
+    flexDirection: 'row-reverse',
   },
   pressed: {
     opacity: 0.75,
+  },
+  expandMapwrapper: {
+    flexDirection: 'row',
+    position: 'absolute',
+    marginTop: Dimensions.get('screen').height / 2.7,
+    backgroundColor: '#006D77',
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    borderRadius: 5.6,
+    marginRight: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  expandText: {
+    color: '#FFFFFF',
+    fontFamily: 'OpenSans-SemiBold',
+    fontSize: 12,
+    textAlign: 'center',
   },
   minHeadText: {
     fontFamily: 'OpenSans-SemiBold',
@@ -136,7 +163,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 25,
+    marginHorizontal: Dimensions.get('screen').width / 45.5,
   },
   textContainer: {
     marginBottom: 20,
